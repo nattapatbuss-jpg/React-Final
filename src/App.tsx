@@ -1,0 +1,56 @@
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import { Layout } from "antd";
+
+import Home from "./pages/Home";
+import Calculate from "./pages/Calculate";
+import ProductList from "./pages/ProductList";
+import NotFound from "./pages/NotFound";
+
+import "./index.css";
+
+const { Header, Content } = Layout;
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Layout className="app-layout">
+        <Header className="navbar">
+          <div className="brand">
+            <div className="brand-icon">V</div>
+            <span>VITALY</span>
+          </div>
+
+          <nav className="nav-links">
+            <NavLink to="/" end>
+              Home
+            </NavLink>
+
+            <NavLink to="/calculate">
+              BMI Calculator
+            </NavLink>
+
+            <NavLink to="/products">
+              Products
+            </NavLink>
+          </nav>
+        </Header>
+
+        <Content>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/calculate" element={<Calculate />} />
+            <Route path="/products" element={<ProductList />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Content>
+
+        <footer className="footer">
+          <span>VITALY</span>
+          <p>Simple tools for a healthier you.</p>
+        </footer>
+      </Layout>
+    </BrowserRouter>
+  );
+}
+
+export default App;
